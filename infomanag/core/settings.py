@@ -46,9 +46,6 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-PROJECT_APP = [
-
-]
 THIRD_PARTY_APP = [
     'corsheaders',
     'rest_framework',
@@ -59,7 +56,11 @@ THIRD_PARTY_APP = [
     'ckeditor',
     'ckeditor_uploader',
 ]
-INSTALLED_APPS = DJANGO_APPS+PROJECT_APP
+PROJECT_APP = [
+    'apps.user'
+]
+
+INSTALLED_APPS = DJANGO_APPS+PROJECT_APP+THIRD_PARTY_APP
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -159,13 +160,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -200,7 +197,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
+AUTH_USER_MODEL="user.UserAccount"
 
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
