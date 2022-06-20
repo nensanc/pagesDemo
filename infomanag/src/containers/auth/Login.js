@@ -48,7 +48,7 @@ const Login = ({
               <h1 className="my-5 display-5 fw-bold ls-tight" style={{color: "hsl(218, 81%, 95%)"}}>
                 The best offer <br />
                 <span style={{color: "hsl(218, 81%, 75%)"}}>for your business</span>
-              </h1>
+              </h1>              
               <p className="mb-4 opacity-70" style={{color: "hsl(218, 81%, 85%)"}}>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Temporibus, expedita iusto veniam atque, magni tempora mollitia
@@ -58,8 +58,8 @@ const Login = ({
             </div>
 
             <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
-              <div id="radius-shape-1" className="position-absolute rounded-circle shadow-4-strong" style={{color: "#db6930", opacity:".8"}}></div>
-              <div id="radius-shape-2" className="position-absolute shadow-5-strong" style={{color: "#db6930", opacity:".8"}}></div>
+              <div id="radius-shape-1" className="position-absolute rounded-circle shadow-4-strong"></div>
+              <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
               <img className="p-5 img-fluid" src={xmlogo} alt="..." />
               <div className="card bg-glass">
                 <div className="card-body px-4 py-5 px-md-5">
