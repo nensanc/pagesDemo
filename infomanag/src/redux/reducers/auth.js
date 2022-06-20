@@ -13,7 +13,12 @@ import {
     AUTHENTICATED_FAIL,
     REFRESH_SUCCESS,
     REFRESH_FAIL,
-    LOGOUT
+    LOGOUT,
+    RESET_PASSWORD_SUCCESS,
+    RESET_PASSWORD_FAIL,
+    RESET_PASSWORD_CONFIRM_FAIL,
+    RESET_PASSWORD_CONFIRM_SUCCESS,
+    SET_SIGN_STATE,
 } from '../actions/types';
 
 
@@ -22,13 +27,19 @@ const initialState = {
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
     user: null,
-    loading: false
+    loading: false,
+    inSign: false,
 }
 
 export default function Auth(state = initialState, action) {
     const { type, payload } = action;
 
     switch(type) {
+        case SET_SIGN_STATE:
+            return{
+                ...state,
+                inSign:payload,
+            }
         case SET_AUTH_LOADING:
             return {
                 ...state,
@@ -74,6 +85,10 @@ export default function Auth(state = initialState, action) {
             }
         case ACTIVATION_SUCCESS:
         case ACTIVATION_FAIL:
+        case RESET_PASSWORD_SUCCESS:
+        case RESET_PASSWORD_FAIL:
+        case RESET_PASSWORD_CONFIRM_FAIL:
+        case RESET_PASSWORD_CONFIRM_SUCCESS:
             return{
                 ...state
             }
