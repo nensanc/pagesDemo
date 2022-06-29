@@ -20,7 +20,7 @@ export default function Footer() {
     {/* <!-- Copyright --> */}
     <div className="text-center text-white p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
       © 2020 Copyright:
-      <a className="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      <a className="text-white" href="https://www.xm.com.co/">Portal XM.com</a>
     </div>
     {/* <!-- Copyright --> */}
   </footer>

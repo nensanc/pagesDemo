@@ -65,7 +65,7 @@ const Layout = (props) => {
     return(
       <div id="page-top">
         <Navbar/>
-        <ToastContainer autoClose={5000} />
+        <ToastContainer autoClose={1000} />
         {props.children}
         <Footer/>
       </div>

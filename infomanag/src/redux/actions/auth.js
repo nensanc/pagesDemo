@@ -88,12 +88,12 @@ export const signup = (first_name, last_name, email, password, re_password) => a
                 type: SIGNUP_SUCCESS,
                 payload: res.data
             });
-            dispatch(setAlert('Te enviamos un correo, por favor activa tu cuenta. Revisa el correo de spam','green'))
+            dispatch(setAlert(true,'Te enviamos un correo, por favor activa tu cuenta. Revisa el correo de spam','#8bf282'))
         } else {
             dispatch({
                 type: SIGNUP_FAIL
             });
-            dispatch(setAlert('Error al crear cuenta', 'red'));
+            dispatch(setAlert(true,'Error al crear cuenta', '#fcbfbf'));
         }
         dispatch({
             type: REMOVE_AUTH_LOADING
@@ -105,7 +105,7 @@ export const signup = (first_name, last_name, email, password, re_password) => a
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('Error conectando con el servidor, intenta mas tarde.', 'red'));
+        dispatch(setAlert(true,'Error conectando con el servidor, intenta mas tarde.', '#fcbfbf'));
     }
 };
 
@@ -167,12 +167,12 @@ export const activate = (uid, token) => async dispatch => {
             dispatch({
                 type: ACTIVATION_SUCCESS
             });
-            dispatch(setAlert('Cuenta activada correctamente', 'green'));
+            dispatch(setAlert(true,'Cuenta activada correctamente', '#8bf282'));
         } else {
             dispatch({
                 type: ACTIVATION_FAIL
             });
-            dispatch(setAlert('Error activando cuenta', 'red'));
+            dispatch(setAlert(true,'Error activando cuenta', '#fcbfbf'));
         }
         dispatch({
             type: REMOVE_AUTH_LOADING
@@ -185,7 +185,7 @@ export const activate = (uid, token) => async dispatch => {
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('Error al conectar con el servidor, intenta mas tarde.', 'red'));
+        dispatch(setAlert(true,'Error al conectar con el servidor, intenta mas tarde.', '#fcbfbf'));
     }
 };
 
@@ -216,7 +216,6 @@ export const login = (email, password) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('Inicio de sesión con éxito', 'green'));
         } else {
             dispatch({
                 type: LOGIN_FAIL
@@ -224,7 +223,7 @@ export const login = (email, password) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('Error al iniciar sesion.', 'red'));
+            dispatch(setAlert(true, 'Error al iniciar sesion.', '#fcbfbf'));
         }
     }
     catch(err){
@@ -234,7 +233,7 @@ export const login = (email, password) => async dispatch => {
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('Error al iniciar sesion. Intenta mas tarde', 'red'));
+        dispatch(setAlert(true, 'Error al iniciar sesion. Intenta de nuevo', '#fcbfbf'));
     }
 }
 
@@ -299,7 +298,7 @@ export const reset_password = (email) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('Password reset email sent', 'green'));
+            dispatch(setAlert(true,'Password reset email sent', '#8bf282'));
         } else {
             dispatch({
                 type: RESET_PASSWORD_FAIL
@@ -307,7 +306,7 @@ export const reset_password = (email) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('Error sending password reset email', 'red'));
+            dispatch(setAlert(true,'Error sending password reset email', '#fcbfbf'));
         }
     }
     catch(err){
@@ -317,7 +316,7 @@ export const reset_password = (email) => async dispatch => {
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('Error sending password reset email', 'red'));
+        dispatch(setAlert(true,'Error sending password reset email', '#fcbfbf'));
     }
 }
 
@@ -346,7 +345,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert('Passwords do not match', 'red'));
+        dispatch(setAlert(true, 'Passwords do not match', '#fcbfbf'));
     } else {
         try {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`, body, config);
@@ -358,7 +357,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
                 dispatch({
                     type: REMOVE_AUTH_LOADING
                 });
-                dispatch(setAlert('Password has been reset successfully', 'green'));
+                dispatch(setAlert(true,'Password has been reset successfully', '#8bf282'));
             } else {
                 dispatch({
                     type: RESET_PASSWORD_CONFIRM_FAIL
@@ -366,7 +365,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
                 dispatch({
                     type: REMOVE_AUTH_LOADING
                 });
-                dispatch(setAlert('Error resetting your password', 'red'));
+                dispatch(setAlert(true,'Error resetting your password', '#fcbfbf'));
             }
         } catch(err){
             dispatch({
@@ -375,7 +374,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert('Error resetting your password', 'red'));
+            dispatch(setAlert(true,'Error resetting your password', '#fcbfbf'));
         }
     }
 }
@@ -384,7 +383,7 @@ export const logout = () => dispatch => {
     dispatch({
         type: LOGOUT
     });
-    dispatch(setAlert('Succesfully logged out', 'green'));
+    dispatch(setAlert(true,'Succesfully logged out', '#8bf282'));
 }
 
 export const set_sign_state = (sign) => dispatch => {

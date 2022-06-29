@@ -34,9 +34,9 @@ const Login = ({
   }
 
 
-  if (activated){
-    return <Navigate to='/' replace={true}  />;
-  }
+  // if (activated){
+  //   return <Navigate to='/' replace={true}  />;
+  // }
 
   return(
     <Layout>
@@ -63,23 +63,53 @@ const Login = ({
               <img className="p-5 img-fluid" src={xmlogo} alt="..." />
               <div className="card bg-glass">
                 <div className="card-body px-4 py-5 px-md-5">
-                  <form>
+                  <form onSubmit={e=>onSubmit(e)}>
                      {/* <!-- Email input --> */}
                     <div className="form-outline mb-4">
-                      <input type="email" id="form3Example3" className="form-control" />
+                      <input 
+                            className="form-control" 
+                            name="email"
+                            value={email}
+                            onChange={e=>onChange(e)}
+                            type="email"
+                            required
+                          />
                       <label className="form-label" htmlFor="form3Example3">Email address</label>
                     </div>
 
                     {/* <!-- Password input --> */}
-                    <div className="form-outline mb-4">
-                      <input type="password" id="form3Example4" className="form-control" />
-                      <label className="form-label" htmlFor="form3Example4">Password</label>
+                    <div className="form-outline mb-2">
+                      <input 
+                            className="form-control" 
+                            name="password"
+                            value={password}
+                            onChange={e=>onChange(e)}
+                            type="password"
+                            required
+                            />
+                      <label className="form-label" htmlFor="form3Example4">Password</label>                    
                     </div>
-
+                    <p className="secondary">
+                        <Link to="/reset_password">
+                        Forgot your password?
+                      </Link>
+                    </p>
+                    <div>
                     {/* <!-- Submit button --> */}
-                    <button type="submit" className="btn btn-primary btn-block btn-lg">
-                      Login
-                    </button>
+                    {loading?
+                      <button type="submit" className="btn btn-primary btn-block btn-lg">
+                        <Oval
+                        color="#fff"
+                        width={20}
+                        height={20}
+                        />
+                      </button>
+                      :
+                      <button type="submit" className="btn btn-primary btn-block btn-lg">
+                        Login
+                      </button>                    
+                    }
+                    </div>
                   </form>
                 </div>
               </div>

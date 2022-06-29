@@ -8,7 +8,7 @@ import Alert from '../alert';
 import { connect } from 'react-redux';
 import { logout, set_sign_state } from '../../redux/actions/auth';
 import '../../styles/home.css';
-
+import logoxm from '../../images/XM.png'
 
 function Navbar({
   isAuthenticated, 
@@ -34,9 +34,10 @@ function Navbar({
 
 
   return (
+      <>
       <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-          <div className="container px-4 px-lg-5">
-              <Link to='/' onClick={scrollToTop} className="navbar-brand">Start Bootstrap</Link>
+          <div className="container px-3 px-lg-5">
+              <Link to='/' onClick={scrollToTop} className="navbar-brand">ITD</Link>
               <button className="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   Menu
                   <i className="fas fa-bars"></i>
@@ -46,7 +47,7 @@ function Navbar({
                       {inSign?
                       null:
                       <>
-                      <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
+                      <li className="nav-item"><a className="nav-link" href="#about">News</a></li>
                       <li className="nav-item"><a className="nav-link" href="#projects">Projects</a></li>
                       <li className="nav-item"><a className="nav-link" href="#signup">Contact</a></li></>}
                       {isAuthenticated?
@@ -62,6 +63,8 @@ function Navbar({
               </div>
           </div>
       </nav>
+      <Alert />
+      </>
   )
 }
 const mapStateToProps = state => ({

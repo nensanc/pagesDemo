@@ -4,7 +4,9 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    alert: null
+    show: false,
+    msg: "",
+    alertType: "",
 };
 
 export default function Alert(state = initialState, action) {
@@ -14,12 +16,16 @@ export default function Alert(state = initialState, action) {
         case SET_ALERT:
             return {
                 ...state,
-                alert: payload
+                show: payload.show,
+                msg: payload.msg,
+                alertType: payload.alertType
             };
         case REMOVE_ALERT:
             return {
                 ...state,
-                alert: null
+                show: false,
+                msg: "",
+                alertType: ""
             }
         default:
             return state

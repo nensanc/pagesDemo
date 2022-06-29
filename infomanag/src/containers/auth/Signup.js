@@ -7,6 +7,11 @@ import xmlogo from '../../images/XM.png'
 
 const Signup = ({signup}) => {
 
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -42,8 +47,8 @@ const Signup = ({signup}) => {
           <div className="row gx-lg-5 align-items-center mb-5">
             <div className="col-lg-6 mb-5 mb-lg-0" style={{zIndex: "10",marginTop:"5rem"}}>
               <h1 className="my-5 display-5 fw-bold ls-tight" style={{color: "hsl(218, 81%, 95%)"}}>
-                The best offer <br />
-                <span style={{color: "hsl(218, 81%, 75%)"}}>for your business</span>
+                La mejor opción <br />
+                <span style={{color: "hsl(218, 81%, 75%)"}}>para gestionar tus procesos</span>
               </h1>
               <p className="mb-4 opacity-70" style={{color: "hsl(218, 81%, 85%)"}}>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -59,18 +64,32 @@ const Signup = ({signup}) => {
               <img className="p-5 img-fluid" src={xmlogo} alt="..." />
               <div className="card bg-glass">
                 <div className="card-body px-4 py-5 px-md-5">
-                  <form>
+                  <form onSubmit={e=>onSubmit(e)}>
                     {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
                     <div className="row">
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
-                          <input type="text" id="form3Example1" className="form-control" />
+                          <input 
+                                type="text" 
+                                className="form-control" 
+                                name="first_name"
+                                value={first_name}
+                                onChange={e=>onChange(e)}
+                                required
+                                />
                           <label className="form-label" htmlFor="form3Example1">First name</label>
                         </div>
                       </div>
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
-                          <input type="text" id="form3Example2" className="form-control" />
+                          <input 
+                                className="form-control" 
+                                name="last_name"
+                                value={last_name}
+                                onChange={e=>onChange(e)}
+                                type="text"
+                                required
+                                />
                           <label className="form-label" htmlFor="form3Example2">Last name</label>
                         </div>
                       </div>
@@ -78,26 +97,51 @@ const Signup = ({signup}) => {
 
                     {/* <!-- Email input --> */}
                     <div className="form-outline mb-4">
-                      <input type="email" id="form3Example3" className="form-control" />
+                      <input 
+                            className="form-control" 
+                            name="email"
+                            value={email}
+                            onChange={e=>onChange(e)}
+                            type="email"
+                            required
+                            />
                       <label className="form-label" htmlFor="form3Example3">Email address</label>
                     </div>
 
                     {/* <!-- Password input --> */}
                     <div className="form-outline mb-4">
-                      <input type="password" id="form3Example4" className="form-control" />
+                      <input 
+                            className="form-control" 
+                            name="password"
+                            value={password}
+                            onChange={e=>onChange(e)}
+                            type="password"
+                            required
+                            />
                       <label className="form-label" htmlFor="form3Example4">Password</label>
                     </div>
 
                     {/* <!-- Confirm Password input --> */}
                     <div className="form-outline mb-4">
-                      <input type="password" id="form3Example4" className="form-control" />
+                      <input 
+                            className="form-control" 
+                            name="re_password"
+                            value={re_password}
+                            onChange={e=>onChange(e)}
+                            type="password"
+                            required
+                            />
                       <label className="form-label" htmlFor="form3Example4">Confirm Password</label>
                     </div>
 
                     {/* <!-- Submit button --> */}
-                    <button type="submit" className="btn btn-primary btn-block btn-lg">
-                      Sign up
-                    </button>
+                    <div>
+                      <button 
+                            type="submit" 
+                            className="btn btn-primary btn-block btn-lg">
+                            Register
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
