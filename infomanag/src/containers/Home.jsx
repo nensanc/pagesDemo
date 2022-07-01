@@ -2,9 +2,16 @@ import Layout from "../hocs/Layout"
 import { Link } from 'react-router-dom'
 import ipad from '../images/home/ipad.png'
 import bg_masthead from '../images/home/bg-masthead.jpg'
-import demo_image_01 from '../images/home/demo-image-01.jpg'
-import demo_image_02 from '../images/home/demo-image-02.jpg'
+
 const Home = () =>{
+    const scrollToTop = () =>{
+        window.scrollTo({
+          top: 0, 
+          behavior: 'smooth'
+          /* you can also use 'auto' behaviour
+             in place of 'smooth' */
+        });
+      };
   return(
     <Layout>
         {/* <!-- Masthead--> */}
@@ -12,8 +19,8 @@ const Home = () =>{
             <div className="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div className="d-flex justify-content-center">
                     <div className="text-center">
-                        <p className="display-2 text-white">Integrador Transversal de Datos</p>
-                        <h2 className="text-white mx-auto mt-2 mb-5">Gestion, apoyo y agilidad es lo que puedes encontrar en el ITD, somos XM</h2>
+                        <p className="display-2 text-white">Gestor Transversal de Datos</p>
+                        <h2 className="text-white mx-auto mt-2 mb-5">Gestion, apoyo y agilidad es lo que puedes encontrar en el GTD, somos XM</h2>
                         <a className="btn btn-primary" href="#about">Get Started</a>
                     </div>
                 </div>                
@@ -42,41 +49,39 @@ const Home = () =>{
                 <div className="row gx-0 mb-4 mb-lg-5 align-items-center">
                     <div className="col-xl-8 col-lg-7"><img className="img-fluid mb-3 mb-lg-0" src={bg_masthead} alt="..." /></div>
                     <div className="col-xl-4 col-lg-5">
-                        <div className="featured-text text-center text-lg-left">
-                            <h4>Shoreline</h4>
-                            <p className="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+                        <div className="featured-text-r text-center text-lg-left">
+                            <h4>Listas de Chequeo</h4>
+                            <p className="text-black-50 mb-0">Una forma de gestionar tus proyectos, creando actividades y tareas, consiguiendo que cada paso sea guiado y guardado</p>
+                            <Link to="/listas" onClick={scrollToTop}>Ver mas</Link>
                         </div>
                     </div>
                 </div>
-                {/* <!-- Project One Row--> */}
-                <div className="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div className="col-lg-6"><img className="img-fluid" src={demo_image_01} alt="..." /></div>
-                    <div className="col-lg-6">
-                        <div className="bg-black text-center h-100 project">
-                            <div className="d-flex h-100">
-                                <div className="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4  className="text-white">Misty</h4>
-                                    <p className="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
-                                    <hr className="d-none d-lg-block mb-0 ms-0" />
-                                </div>
-                            </div>
+                <div className="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div className="col-xl-4 col-lg-5">
+                        <div className="featured-text-l text-center text-lg-left">
+                            <h4>DashBoard</h4>
+                            <p className="text-black-50 mb-0">Integración entre el modelo eléctrico de Power Factory, la información de SCADA, los datos Energéticos, los datos Eléctricos y la información de Proyectos</p>
+                        </div>
+                    </div>
+                    <div className="col-xl-8 col-lg-7"><img className="img-fluid mb-3 mb-lg-0" src={bg_masthead} alt="..." /></div>
+                </div>
+                <div className="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div className="col-xl-8 col-lg-7"><img className="img-fluid mb-3 mb-lg-0" src={bg_masthead} alt="..." /></div>
+                    <div className="col-xl-4 col-lg-5">
+                        <div className="featured-text-r text-center text-lg-left">
+                            <h4>Calidad del Modelo Eléctrico</h4>
+                            <p className="text-black-50 mb-0">Información y seguimiento de la calidad del modelo eléctrico de Power Factory</p>
                         </div>
                     </div>
                 </div>
-                {/* <!-- Project Two Row--> */}
-                <div className="row gx-0 justify-content-center">
-                    <div className="col-lg-6"><img className="img-fluid" src={demo_image_02} alt="..." /></div>
-                    <div className="col-lg-6 order-lg-first">
-                        <div className="bg-black text-center h-100 project">
-                            <div className="d-flex h-100">
-                                <div className="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 className="text-white">Mountains</h4>
-                                    <p className="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-                                    <hr className="d-none d-lg-block mb-0 me-0" />
-                                </div>
-                            </div>
+                <div className="row gx-0 mb-4 mb-lg-5 align-items-center">
+                    <div className="col-xl-4 col-lg-5">
+                        <div className="featured-text-l text-center text-lg-left">
+                            <h4>THCT</h4>
+                            <p className="text-black-50 mb-0">Integración del aplicativo THCT con el modelo eléctrico para determinar la cantidad de FERNC en una zona determinada</p>
                         </div>
                     </div>
+                    <div className="col-xl-8 col-lg-7"><img className="img-fluid mb-3 mb-lg-0" src={bg_masthead} alt="..." /></div>
                 </div>
             </div>
         </section>
@@ -87,13 +92,6 @@ const Home = () =>{
                     <div className="col-md-10 col-lg-8 mx-auto text-center">
                         <i className="far fa-paper-plane fa-2x mb-2 text-white"></i>
                         <h2 className="text-white mb-5">Subscribe to receive updates!</h2>
-                        {/* <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!--> */}
                         <form className="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
                             {/* <!-- Email address input--> */}
                             <div className="row input-group-newsletter">

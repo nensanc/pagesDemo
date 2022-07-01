@@ -37,9 +37,9 @@ function Navbar({
       <>
       <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
           <div className="container px-3 px-lg-5">
-              <Link to='/' onClick={scrollToTop} className="navbar-brand">ITD</Link>
+              <Link to='/' onClick={scrollToTop} className="navbar-brand">GTD</Link>
               <button className="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                  Menu
+                    Menu
                   <i className="fas fa-bars"></i>
               </button>
               <div className="collapse navbar-collapse" id="navbarResponsive">
@@ -47,7 +47,7 @@ function Navbar({
                       {inSign?
                       null:
                       <>
-                      <li className="nav-item"><a className="nav-link" href="#about">News</a></li>
+                      <li className="nav-item"><a className="nav-link" href="#about">Blogs</a></li>
                       <li className="nav-item"><a className="nav-link" href="#projects">Projects</a></li>
                       <li className="nav-item"><a className="nav-link" href="#signup">Contact</a></li></>}
                       {isAuthenticated?
