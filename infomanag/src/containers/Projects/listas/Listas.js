@@ -4,13 +4,20 @@ import { connect } from 'react-redux'
 import { Navigate } from 'react-router'
 
 import {Oval} from 'react-loader-spinner'
+import { view_new_process } from '../../../redux/actions/listas'
 
 const Listas = ({
-    loading
+    loading,
+    view_new_process,
+    bool_view_new_process
     }) =>{
     const params = useParams();
 
     const [activated, setActivated] = useState(false);
+
+    const onclick = e =>{
+        view_new_process(!bool_view_new_process)
+    }
 
     return (
       <section className="bg-dark py-5">
@@ -21,7 +28,12 @@ const Listas = ({
                         <h1 className="display-5 fw-bolder text-white mb-2">Listas de Chequeo</h1>
                         <p className="lead fw-normal text-white-50 mb-4">Una forma facíl de crear, actualizar y usar tus Listas de Chequeo</p>
                         <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a className="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Nuevo Proceso</a>
+                            <button onClick={onclick} className="btn btn-primary btn-lg px-4 me-sm-3" >
+                                {bool_view_new_process?
+                                    "Ocultar Nuevo Proceso":
+                                    "Crear Nuevo Proceso"
+                                }                                
+                            </button>
                             <a className="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
                         </div>
                     </div>
@@ -35,9 +47,9 @@ const Listas = ({
 
 
 const mapStateToProps = state => ({
-
+    bool_view_new_process: state.Listas.view_new_process
 })
 
 export default connect(mapStateToProps,{
-
+    view_new_process
 }) (Listas)

@@ -1,17 +1,17 @@
 import Layout from '../../hocs/Layout'
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { login } from '../../redux/actions/auth'
+import { login, set_sign_state } from '../../redux/actions/auth'
 import { Oval } from 'react-loader-spinner'
 import { Navigate } from 'react-router'
 import xmlogo from '../../images/XM.png'
 
-
 const Login = ({
   login,
-  onTop,
   loading,
+  loginStatus,
+  set_sign_state
 }) => {
   const [formData, setFormData] = useState({
     email: '',
@@ -23,20 +23,21 @@ const Login = ({
     password,
   } = formData;
 
-  const [activated, setActivated] = useState(false);
+  const [loginSucess, setloginSucess] = useState(false);
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e =>{
     e.preventDefault();
     login(email, password);
-    setActivated(true);
+    setloginSucess(true);
   }
 
 
-  // if (activated){
-  //   return <Navigate to='/' replace={true}  />;
-  // }
+  if (loginSucess && !loading && loginStatus){
+    set_sign_state(false)
+    return <Navigate to='/' />;
+  }
 
   return(
     <Layout>
@@ -123,8 +124,9 @@ const Login = ({
 
 const mapStateToProps = state => ({
   loading: state.Auth.loading,
+  loginStatus: state.Auth.loginStatus
 })
 
 export default connect(mapStateToProps, {
-  login
+  login, set_sign_state
 }) (Login)

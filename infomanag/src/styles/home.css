@@ -11524,7 +11524,7 @@ body {
   }
   /* cambia el background de navbar */
   #mainNav.navbar-shrink {
-    background-color: #db6930;
+    background-color: rgba(219, 115, 48, .96);;
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: rgba(255, 255, 255);

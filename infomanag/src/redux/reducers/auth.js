@@ -1,8 +1,10 @@
 import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
+    SIGNUP_STATUS,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
+    LOGIN_STATUS,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
     SET_AUTH_LOADING,
@@ -29,12 +31,24 @@ const initialState = {
     user: null,
     loading: false,
     inSign: false,
+    loginStatus: false,
+    signupStatus: false
 }
 
 export default function Auth(state = initialState, action) {
     const { type, payload } = action;
 
     switch(type) {
+        case LOGIN_STATUS:
+            return{
+                ...state,
+                loginStatus:payload,
+            }
+        case SIGNUP_STATUS:
+            return{
+                ...state,
+                signupStatus:payload,
+            }
         case SET_SIGN_STATE:
             return{
                 ...state,

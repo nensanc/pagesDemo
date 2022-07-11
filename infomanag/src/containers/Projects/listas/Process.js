@@ -1,26 +1,34 @@
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { Navigate } from 'react-router'
 import '../../../styles/list.css'
-import {Oval} from 'react-loader-spinner'
+import NewProcess from './NewProcess'
 
 const Process = ({
-    loading
+    loading,
+    bool_view_new_process
     }) =>{
     const params = useParams();
 
     const [activated, setActivated] = useState(false);
 
     return (
-      <section className="py-5">
+      <section className="py-3">
         <div className="container px-5 my-5">
+          {bool_view_new_process?
+            <NewProcess />:
+            <></>
+          }
           <div className="row gx-5">
             <div className="col-lg-12 mb-5">
               <div className="card h-100 shadow border-0">
                 <div className="card-body p-4">
-                  <a className="text-decoration-none link-dark stretched-link" href="#!"><h5 className="card-title mb-3">Administración del modelo eléctrico de Power Factory</h5></a>
-                  <p className="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p className="card-text mb-2 h4">
+                    Administración del modelo eléctrico de Power Factory
+                  </p>
+                  <p className="card-text mb-0">
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                  </p>
                   <div className="d-flex align-items-end justify-content-between pt-4">
                     <div className="d-flex align-items-center">
                       <img className="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
@@ -37,7 +45,6 @@ const Process = ({
                   </div>
                 </div>
               <div className="card-footer p-4 pt-0 bg-transparent border-top-0">  
-                
                 
                 <div className="row list-bg">
                   <div className="col-md-12">
@@ -124,7 +131,7 @@ const Process = ({
 
 
 const mapStateToProps = state => ({
-
+  bool_view_new_process: state.Listas.view_new_process
 })
 
 export default connect(mapStateToProps,{

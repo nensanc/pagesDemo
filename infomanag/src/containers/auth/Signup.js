@@ -1,11 +1,20 @@
 import Layout from '../../hocs/Layout'
 import { useState, useEffect } from 'react'
 import {connect} from 'react-redux'
-import { signup } from '../../redux/actions/auth'
+import { signup, set_sign_state } from '../../redux/actions/auth'
 import '../../styles/signup.css'
 import xmlogo from '../../images/XM.png'
+import { setAlert } from '../../redux/actions/alert'
+import { Navigate } from 'react-router'
+import { Oval } from 'react-loader-spinner'
 
-const Signup = ({signup}) => {
+const Signup = ({
+  signup, 
+  setAlert, 
+  loading, 
+  signupStatus, 
+  set_sign_state
+}) => {
 
   useEffect(() => {
     window.scrollTo(0,0)
@@ -34,9 +43,17 @@ const Signup = ({signup}) => {
 
   const onSubmit = e =>{
     e.preventDefault();
+    if (password === re_password){
     signup(first_name, last_name, email, password, re_password);
-    console.log(process.env.REACT_APP_API_URL);
     setAccountCreated(true);
+    }else{
+      setAlert(true,"Password do not Match", '#fcbfbf')
+    }
+  }
+
+  if (accountCreated && !loading && signupStatus){
+    set_sign_state(false);
+    return <Navigate to='/' />;
   }
   
   return (
@@ -136,11 +153,21 @@ const Signup = ({signup}) => {
 
                     {/* <!-- Submit button --> */}
                     <div>
-                      <button 
-                            type="submit" 
-                            className="btn btn-primary btn-block btn-lg">
-                            Register
-                      </button>
+                    {loading?
+                        <button type="submit" className="btn btn-primary btn-block btn-lg">
+                          <Oval
+                          color="#fff"
+                          width={20}
+                          height={20}
+                          />
+                        </button>
+                        :
+                        <button 
+                              type="submit" 
+                              className="btn btn-primary btn-block btn-lg">
+                              Register
+                        </button>
+                    }
                     </div>
                   </form>
                 </div>
@@ -154,8 +181,10 @@ const Signup = ({signup}) => {
 }
 
 const mapStateToProps = state => ({
+  loading: state.Auth.loading,
+  signupStatus: state.Auth.signupStatus
 })
 
 export default connect(mapStateToProps, {
-  signup
+  signup, setAlert, set_sign_state
 }) (Signup)

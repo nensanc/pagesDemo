@@ -2,9 +2,12 @@ import Layout from "../hocs/Layout"
 import { Link } from 'react-router-dom'
 import ipad from '../images/home/ipad.png'
 import bg_masthead from '../images/home/bg-masthead.jpg'
+import { set_sign_state } from "../redux/actions/auth"
+import { connect } from 'react-redux';
 
-const Home = () =>{
+const Home = ({set_sign_state}) =>{
     const scrollToTop = () =>{
+        set_sign_state(true)
         window.scrollTo({
           top: 0, 
           behavior: 'smooth'
@@ -163,4 +166,8 @@ const Home = () =>{
   )
 }
 
-export default Home
+const mapStateToProps = state => ({
+  })
+  export default connect(mapStateToProps, {
+    set_sign_state,
+  })(Home)

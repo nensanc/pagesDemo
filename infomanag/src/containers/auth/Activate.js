@@ -6,6 +6,7 @@ import { activate } from '../../redux/actions/auth'
 import { Navigate } from 'react-router'
 
 import {Oval} from 'react-loader-spinner'
+import xmlogo from '../../images/XM.png'
 
 const Activate = ({
     activate,
@@ -27,29 +28,48 @@ const Activate = ({
 
     return (
       <Layout>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-          <div className="max-w-3xl mx-auto">
-          
-            {loading ? 
-                <button
-                    className="inline-flex mt-12 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    <Oval
-                    color="#fff"
-                    width={20}
-                    height={20}
-                    />
-                </button>:
-                <button
-                onClick={activate_account}
-                className="inline-flex mt-12 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                Activate Account
-                </button>
-            }
+        <section className="background-radial-gradient overflow-hidden">
+          <div className="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+            <div className="row gx-lg-5 align-items-center mb-5">
+              <div className="col-lg-6 mb-5 mb-lg-0" style={{zIndex: "10", marginTop:"11rem"}}>
+                <h1 className="my-5 display-5 fw-bold ls-tight" style={{color: "hsl(218, 81%, 95%)"}}>
+                  The best offer <br />
+                  <span style={{color: "hsl(218, 81%, 75%)"}}>for your business</span>
+                </h1>              
+                <p className="mb-4 opacity-70" style={{color: "hsl(218, 81%, 85%)"}}>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                  dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                  ab ipsum nisi dolorem modi. Quos?
+                </p>
+              </div>
+
+              <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div id="radius-shape-1" className="position-absolute rounded-circle shadow-4-strong"></div>
+                <div id="radius-shape-2" className="position-absolute shadow-5-strong"></div>
+                <img className="p-5 img-fluid" src={xmlogo} alt="..." />
+                  <div>
+                  {/* <!-- Submit button --> */}
+                  {loading?
+                    <button type="submit" className="btn btn-primary btn-block btn-lg">
+                      <Oval
+                      color="#fff"
+                      width={20}
+                      height={20}
+                      />
+                    </button>
+                    :
+                    <button 
+                        className="btn btn-primary btn-block btn-lg"
+                        onClick={activate_account}>
+                      Activate Account
+                    </button>                    
+                  }
+                  </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </Layout>
     )
   }

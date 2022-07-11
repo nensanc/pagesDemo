@@ -1,8 +1,10 @@
 import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
+    SIGNUP_STATUS,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
+    LOGIN_STATUS,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
     SET_AUTH_LOADING,
@@ -88,7 +90,12 @@ export const signup = (first_name, last_name, email, password, re_password) => a
                 type: SIGNUP_SUCCESS,
                 payload: res.data
             });
+            dispatch({
+                type: SIGNUP_STATUS,
+                payload: true
+            });
             dispatch(setAlert(true,'Te enviamos un correo, por favor activa tu cuenta. Revisa el correo de spam','#8bf282'))
+            
         } else {
             dispatch({
                 type: SIGNUP_FAIL
@@ -105,7 +112,7 @@ export const signup = (first_name, last_name, email, password, re_password) => a
         dispatch({
             type: REMOVE_AUTH_LOADING
         });
-        dispatch(setAlert(true,'Error conectando con el servidor, intenta mas tarde.', '#fcbfbf'));
+        dispatch(setAlert(true,err.request.response, '#fcbfbf'));
     }
 };
 
@@ -212,6 +219,10 @@ export const login = (email, password) => async dispatch => {
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
+            });
+            dispatch({
+                type: LOGIN_STATUS,
+                payload: true
             });
             dispatch({
                 type: REMOVE_AUTH_LOADING
@@ -390,5 +401,19 @@ export const set_sign_state = (sign) => dispatch => {
     dispatch({
         type: SET_SIGN_STATE,
         payload:sign
+    });
+}
+
+export const set_login_status = () => dispatch => {
+    dispatch({
+        type: LOGIN_STATUS,
+        payload:false
+    });
+}
+
+export const set_signup_status = () => dispatch => {
+    dispatch({
+        type: SIGNUP_STATUS,
+        payload:false
     });
 }
