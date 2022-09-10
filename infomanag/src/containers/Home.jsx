@@ -3,17 +3,12 @@ import { Link } from 'react-router-dom'
 import ipad from '../images/home/ipad.png'
 import bg_masthead from '../images/home/bg-masthead.jpg'
 import { set_sign_state } from "../redux/actions/auth"
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { useEffect } from "react"
 
 const Home = ({set_sign_state}) =>{
     const scrollToTop = () =>{
         set_sign_state(true)
-        window.scrollTo({
-          top: 0, 
-          behavior: 'smooth'
-          /* you can also use 'auto' behaviour
-             in place of 'smooth' */
-        });
       };
   return(
     <Layout>
@@ -53,16 +48,19 @@ const Home = ({set_sign_state}) =>{
                     <div className="col-xl-8 col-lg-7"><img className="img-fluid mb-3 mb-lg-0" src={bg_masthead} alt="..." /></div>
                     <div className="col-xl-4 col-lg-5">
                         <div className="featured-text-r text-center text-lg-left">
-                            <h4>Listas de Chequeo</h4>
+                            <Link to="/listas" onClick={scrollToTop} style={{textDecoration:"none"}}>
+                                <h4 className="text-center">Listas de Chequeo</h4>
+                            </Link>                            
                             <p className="text-black-50 mb-0">Una forma de gestionar tus proyectos, creando actividades y tareas, consiguiendo que cada paso sea guiado y guardado</p>
-                            <Link to="/listas" onClick={scrollToTop}>Ver mas</Link>
                         </div>
                     </div>
                 </div>
                 <div className="row gx-0 mb-4 mb-lg-5 align-items-center">
                     <div className="col-xl-4 col-lg-5">
                         <div className="featured-text-l text-center text-lg-left">
-                            <h4>DashBoard</h4>
+                            <Link to="/dashboard" onClick={scrollToTop} style={{textDecoration:"none"}}>
+                                <h4 className="text-center">DashBoard</h4>
+                            </Link> 
                             <p className="text-black-50 mb-0">Integración entre el modelo eléctrico de Power Factory, la información de SCADA, los datos Energéticos, los datos Eléctricos y la información de Proyectos</p>
                         </div>
                     </div>

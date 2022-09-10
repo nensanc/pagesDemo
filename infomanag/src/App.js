@@ -10,7 +10,9 @@ import Signup from './containers/auth/Signup';
 import Activate from './containers/auth/Activate';
 import ResetPassword from './containers/auth/ResetPassword';
 import ResetPasswordConfirm from './containers/auth/ResetPasswordConfirm';
-import Listas from './containers/Projects/listas';
+import Listas from './components/pages/listas';
+import Dashboard from './components/pages/dashboard/Main';
+
 function App() {
   return (
     <Provider store={store}>
@@ -27,6 +29,7 @@ function App() {
             <Route exact path='/reset_password' element={<ResetPassword/>}/>
             <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm/>}/>
             <Route exact path='/listas' element={<Listas/>}/>
+            <Route exact path='/dashboard' element={<Dashboard/>}/>
 
           </Routes>
       </Router>

@@ -58,7 +58,8 @@ THIRD_PARTY_APP = [
     'ckeditor_uploader',
 ]
 PROJECT_APP = [
-    'apps.user'
+    'apps.user',
+    'apps.listas'
 ]
 
 INSTALLED_APPS = DJANGO_APPS+PROJECT_APP+THIRD_PARTY_APP
