@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from '../components/navigation/Navbar';
 import Footer from '../components/navigation/Footer';
-import {ScrollSpy} from 'bootstrap';
 
 window.addEventListener('DOMContentLoaded', event => {
 

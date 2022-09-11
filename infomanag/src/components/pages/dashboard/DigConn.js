@@ -1,26 +1,69 @@
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Oval } from 'react-loader-spinner';
+import { useRef} from 'react';
+import { send_data } from '../../../redux/actions/localserver';
 
-
-function DigCon({
-
+function DigConn({
+    loading,
+    send_data,
+    code
 }) {
 
-    const onClick =(e)=>{
-        console.log('Hola')
-        const res = axios.get('http://127.0.0.1:5000/summary');
-        console.log(res)
+    const path_python_pf = useRef(null);
+
+    const onConnPF =(e)=>{
+        send_data(
+            code,
+            "Activando Power Factory",
+            "activar_pf",
+            {"path":path_python_pf.current.value}
+            )
+    }
+
+    const onClick =(action)=>{
+        send_data(
+            code,
+            "Acción en Power Factory",
+            action,
+            {"action":action}
+            )
     }
 
   return (
     <div className="container-fluid px-4">
-        <h1 className="mt-1">Conección con Power Factory</h1>
-        <ol className="breadcrumb mb-4">
+        <h1 style={{marginTop:"4rem"}}>Conección con Power Factory</h1>
+        <ol className="breadcrumb mb-2">
             <li className="breadcrumb-item active">Dashboard</li>
         </ol>
-        <button className='btn btn-primary' onClick={onClick}>
-            Flask
+        <div className="d-flex flex-row m-0 p-0" style={{maxWidth:"50rem"}}>
+            <input 
+                className="form-control" 
+                ref={path_python_pf}
+                type="text"
+                placeholder="Ruta de Python DigSilent"
+                defaultValue="C:\Program Files\DIgSILENT\PowerFactory 2020 SP4\Python\3.8"
+                />
+            {/* <!-- Submit button --> */}
+            &nbsp;&nbsp;
+            {loading?
+            <button className="btn btn-primary">
+                <Oval
+                color="#fff"
+                width={20}
+                height={20}
+                />
+            </button>
+            :
+            <button onClick={onConnPF} className="btn btn-primary m-0 p-1">
+                Conectar
+            </button>                    
+            }
+        </div>
+        <button className='btn btn-primary mb-2 mt-2' onClick={(e)=>onClick('show')}>
+            Show Power Factory
+        </button>
+        <button className='btn btn-primary mb-2 mt-2' onClick={(e)=>onClick('hide')}>
+            Hide Power Factory
         </button>
         <div className="row">
             <div className="col-xl-3 col-md-6">
@@ -84,8 +127,9 @@ function DigCon({
   )
 }
 const mapStateToProps = state => ({
-
+    loading: state.Auth.loading,
+    code: state.Localserver.code
 })
 export default connect(mapStateToProps, {
-
-})(DigCon)
+    send_data
+})(DigConn)

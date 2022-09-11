@@ -2,14 +2,11 @@ import Layout from '../../../hocs/Layout'
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 import { view_new_process } from '../../../redux/actions/listas'
-import {Oval} from 'react-loader-spinner'
 import NewProcess from './Menus/NewProcess'
 import Requirements from './Menus/Requirements'
-import { useLocation } from "react-router-dom"
 
 
 const Index = ({
-    loading,
     view_new_process,
     bool_view_new_process
 }) => {

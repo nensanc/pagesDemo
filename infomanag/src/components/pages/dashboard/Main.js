@@ -5,9 +5,10 @@ import { useState } from 'react';
 
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Dashboard from './Dashboard';
+import Psm from './Psm';
 import DigConn from './DigConn';
 import LocalServer from './LocalServer';
+import Alert from '../../alert';
 
 function Main({
 
@@ -25,9 +26,9 @@ function Main({
                 return(
                     <DigConn/>
                 )
-            case "dashboard":
+            case "psm":
                 return(
-                    <Dashboard/>
+                    <Psm/>
                 )
             default:
                 return(
@@ -39,22 +40,23 @@ function Main({
 return (
 <section className="sb-nav-fixed">
     <Navbar />
+    <Alert />
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div className="sb-sidenav-menu">
                     <div className="nav">
-                        <Link className="navbar-brand ps-3" to="/">Elta Analytics</Link>
+                        <Link className="navbar-brand ps-3" to="/">GTD</Link>
                         <div className="sb-sidenav-menu-heading">Core</div>
                         <button className="nav-link btn btn-link" onClick={(e)=>selectPage("digconn")}>
                             <div className="sb-nav-link-icon"><i className="bi bi-gear-wide-connected"></i></div>
                             DigConn
-                        </button>
-                        <button className="nav-link btn btn-link" onClick={(e)=>selectPage("dashboard")}>
-                            <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </button>
+                        </button>                        
                         <div className="sb-sidenav-menu-heading">Interface</div>
+                        <button className="nav-link btn btn-link mb-0" onClick={(e)=>selectPage("psm")}>
+                            <div className="sb-nav-link-icon mb-0"><i className="fas fa-tachometer-alt mb-0"></i></div>
+                            PSM
+                        </button>
                         <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
                             Layouts

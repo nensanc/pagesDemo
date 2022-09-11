@@ -7,8 +7,8 @@ import {
 } from '../../../redux/actions/localserver';
 
 function Navbar({
-    set_view_localserver
-
+    set_view_localserver,
+    state_server
 }) {
     const onClick =(e)=>{
         e.preventDefault();
@@ -31,7 +31,7 @@ function Navbar({
         </form> 
 
         <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onClick={showServer}>
-        <FontAwesomeIcon icon={faServer} />
+            <FontAwesomeIcon icon={faServer} style={{color:state_server?"green":"red"}} />
         </button>
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li className="nav-item dropdown">
@@ -48,7 +48,7 @@ function Navbar({
   )
 }
 const mapStateToProps = state => ({
-
+    state_server: state.Localserver.state_server
 })
 export default connect(mapStateToProps, {
     set_view_localserver

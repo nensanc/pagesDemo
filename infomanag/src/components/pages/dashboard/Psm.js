@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
 
-function Dashboard({
+function Psm({
 }) {
 
   return (
 <main>
     <div className="container-fluid px-4">
-        <h1 className="mt-5">Dashboard</h1>
+        <h1 style={{marginTop:"4rem"}}>Progamación Semestral de Mantenimientos</h1>
         <ol className="breadcrumb mb-4">
-            <li className="breadcrumb-item active">Dashboard</li>
+            <li className="breadcrumb-item active">Progamación Semestral de Mantenimientos</li>
         </ol>
         <div className="row">
             <div className="col-xl-3 col-md-6">
@@ -142,4 +142,4 @@ const mapStateToProps = state => ({
 })
 export default connect(mapStateToProps, {
 
-})(Dashboard)
+})(Psm)

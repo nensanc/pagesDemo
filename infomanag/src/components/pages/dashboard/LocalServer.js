@@ -2,13 +2,19 @@ import { connect } from 'react-redux';
 import {Modal} from 'react-bootstrap';
 import { useRef} from 'react';
 import { Oval } from 'react-loader-spinner';
-import { setAlert } from '../../../redux/actions/alert';
-import { set_view_localserver } from '../../../redux/actions/localserver';
+import { 
+    set_view_localserver,
+    connection,
+    localserver_off
+} from '../../../redux/actions/localserver';
 
 function LocalServer({
     set_view_localserver,
     loading,
-    show
+    show,
+    connection,
+    state_server,
+    localserver_off
 }) {
 
     const code = useRef(null);
@@ -16,7 +22,12 @@ function LocalServer({
     
     const onSubmit = e =>{
         e.preventDefault();
-        
+        if (state_server){
+            localserver_off()
+        }else{
+        const value = code.current.value
+        connection(value)
+        }
     }  
 
     if (!loading){
@@ -33,6 +44,7 @@ function LocalServer({
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
+            size="sm"
         >
             <Modal.Header closeButton>
                 <Modal.Title>
@@ -40,16 +52,21 @@ function LocalServer({
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <input 
-                    className="form-control mb-2" 
-                    ref={code}
-                    type="text"
-                    placeholder="Código del servidor"
-                />                                                   
+                {state_server?
+                    <h3 style={{color:'green'}}>La conexión está activa</h3>
+                    :
+                    <input 
+                        className="form-control mb-3" 
+                        ref={code}
+                        type="text"
+                        placeholder="Código del servidor"
+                    />
+                }                                                   
                 <div>
                     {/* <!-- Submit button --> */}
                     {loading?
-                    <button type="submit" className="btn btn-primary btn-block m-0">
+                    <button type="submit" 
+                            className="btn btn-primary btn-block m-0">
                         <Oval
                         color="#fff"
                         width={20}
@@ -57,8 +74,10 @@ function LocalServer({
                         />
                     </button>
                     :
-                    <button onClick={onSubmit} type="submit" className="btn btn-primary btn-block mb-2">
-                        Conectar
+                    <button 
+                        onClick={onSubmit} type="submit" 
+                        className="btn btn-primary btn-block mb-2">
+                        {state_server?"Desconectar":"Conectar"}
                     </button>                    
                     }
                 </div>
@@ -70,8 +89,11 @@ function LocalServer({
 const mapStateToProps = state => ({
     show: state.Localserver.localserver_show,
     loading: state.Auth.loading,
+    state_server: state.Localserver.state_server
 })
 export default connect(mapStateToProps, {
-    set_view_localserver
+    set_view_localserver,
+    connection,
+    localserver_off
 })(LocalServer)
 
