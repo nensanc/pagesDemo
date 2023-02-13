@@ -3014,6 +3014,7 @@ textarea.form-control-lg {
   color: #212529;
   text-align: center;
   text-decoration: none;
+  text-transform: none;
   vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;

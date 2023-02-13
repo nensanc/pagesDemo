@@ -4,7 +4,8 @@ import ipad from '../images/home/ipad.png'
 import bg_masthead from '../images/home/bg-masthead.jpg'
 import { set_sign_state } from "../redux/actions/auth"
 import { connect } from 'react-redux'
-import { useEffect } from "react"
+import video from '../images/home/bg.mp4';
+import '../styles/home.css';
 
 const Home = ({set_sign_state}) =>{
     const scrollToTop = () =>{
@@ -13,13 +14,18 @@ const Home = ({set_sign_state}) =>{
   return(
     <Layout>
         {/* <!-- Masthead--> */}
-        <section className="masthead">
-            <div className="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                <div className="d-flex justify-content-center">
-                    <div className="text-center">
-                        <p className="display-2 text-white">Gestor Transversal de Datos</p>
-                        <h2 className="text-white mx-auto mt-2 mb-5">Gestion, apoyo y agilidad es lo que puedes encontrar en el GTD, somos XM</h2>
-                        <a className="btn btn-primary" href="#about">Get Started</a>
+        <section className="body-bg">
+            <video className="bg-video" playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop"><source src={video} type="video/mp4" /></video>
+            <div className="masthead">
+                <div className="masthead-content px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+                    <div className="d-flex justify-content-center rounded" 
+                        style={{backgroundColor:'rgb(125,60,152,0.25)', padding:'50px'}}
+                        >
+                        <div className="text-center">
+                            <p className="display-1 text-white">Gestor Transversal de Datos</p>
+                            <h2 className="text-white mx-auto mt-2 mb-5">Gestion, apoyo y agilidad es lo que puedes encontrar en el GTD, somos XM</h2>
+                            <a className="btn btn-primary" href="#about">Get Started</a>
+                        </div>
                     </div>
                 </div>                
             </div>

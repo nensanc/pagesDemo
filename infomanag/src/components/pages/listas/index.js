@@ -1,32 +1,17 @@
 import Layout from '../../../hocs/Layout'
 import { connect } from 'react-redux'
-import { useEffect } from 'react'
 import { view_new_process } from '../../../redux/actions/listas'
 import NewProcess from './Menus/NewProcess'
 import Requirements from './Menus/Requirements'
 
 
 const Index = ({
-    view_new_process,
-    bool_view_new_process
+  bool_new_process,
+  view_new_process
 }) => {
 
-  useEffect(() => () => { // <-- Now we return the useEffect teardown effect, which will be fired only after the path/search change for the first time
-    try {
-      // trying to use new API - https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
-    } catch (error) {
-      // just a fallback for older browsers
-      window.scrollTo(0, 0);
-    }
-  }, []);
-
-  const onclick = e =>{
-    view_new_process(!bool_view_new_process)
+  const onclick = _ =>{
+    view_new_process(!bool_new_process)
   } 
 
   return (
@@ -40,10 +25,7 @@ const Index = ({
                   <p className="lead fw-normal text-white-50 mb-4">Una forma facíl de crear, actualizar y usar tus Listas de Chequeo</p>
                   <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                     <button onClick={onclick} className="btn btn-primary btn-lg px-4 me-sm-3" >
-                      {bool_view_new_process?
-                          "Ocultar Nuevo Proceso":
-                          "Crear Nuevo Proceso"
-                      }                                
+                          Crear Nuevo Proceso                          
                     </button>
                     <a className="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
                   </div>
@@ -55,10 +37,7 @@ const Index = ({
         </section>
         <section className="py-3">
         <div className="container px-5 my-5">
-          {bool_view_new_process?
-            <NewProcess />:
-            <></>
-          }
+          <NewProcess/>
           <div className="row gx-5">
             <div className="col-lg-12 mb-5">
               <div className="card h-100 shadow border-0">
@@ -106,7 +85,7 @@ const Index = ({
   }
 
 const mapStateToProps = state => ({
-  bool_view_new_process: state.Listas.view_new_process,
+  bool_new_process: state.Listas.bool_new_process,
 })
 
 export default connect(mapStateToProps,{

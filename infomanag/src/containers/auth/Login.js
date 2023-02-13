@@ -91,7 +91,7 @@ const Login = ({
                       <label className="form-label" htmlFor="form3Example4">Password</label>                    
                     </div>
                     <p className="secondary">
-                        <Link to="/reset_password">
+                        <Link to="/reset_password" className='text-decoration-none'>
                         Forgot your password?
                       </Link>
                     </p>

@@ -6,7 +6,11 @@ import {
     REMOVE_AUTH_LOADING,
     LOCAL_SERVER_OFF,
     LOCAL_PF_SUCCESS,
-    LOCAL_PF_FAIL
+    LOCAL_PF_FAIL,
+    VIEW_PROJECT,
+    GET_PROJECTS_SUCCESS,
+    GET_PROJECTS_FAIL,
+    SELECT_PRJ
 } from './types'
 import { setAlert } from './alert';
 import axios from 'axios'
@@ -17,6 +21,21 @@ export const set_view_localserver = (value) => dispatch => {
         type: VIEW_LOCALSERVER,
         payload:value
     });
+}
+
+export const set_view_prj = (value) => dispatch => {
+    dispatch({
+        type: VIEW_PROJECT,
+        payload:value
+    });
+}
+
+export const select_prj = (value) => dispatch => {
+    dispatch({
+        type: SELECT_PRJ,
+        payload:value
+    });
+    //dispatch(setAlert(true, "Proyecto seleccionado", '#8bf282'));
 }
 
 export const localserver_off = () => dispatch => {
@@ -48,7 +67,7 @@ export const connection = (code) => async dispatch => {
         const res = await axios.post(
             `${process.env.REACT_APP_LOCAL_SERVER_URL}/connection`,
             body, config);
-        if (res.data.res === 'conection success') {
+            if (res.data.res === 'conection success') {
             dispatch({
                 type: LOCAL_SERVER_SUCCESS,
                 payload: code
@@ -56,7 +75,6 @@ export const connection = (code) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert(true, 'Conexión exitosa con el servidro local', '#8bf282'));
         } else {
             dispatch({
                 type: LOCAL_SERVER_FAIL
@@ -104,10 +122,16 @@ export const send_data = (code, msg, action, data) => async dispatch => {
             `${process.env.REACT_APP_LOCAL_SERVER_URL}/data`,
             body, config);
         if (res.status === 200) {
-            switch (res.data.key){
-                case "connpf":
+            switch (res.data.res.action){
+                case "activar_pf":
                     dispatch({
                         type: LOCAL_PF_SUCCESS,
+                        payload: res.data.res
+                    });
+                    break
+                case "get_projects":
+                    dispatch({
+                        type: GET_PROJECTS_SUCCESS,
                         payload: res.data.res
                     });
                     break
@@ -117,12 +141,20 @@ export const send_data = (code, msg, action, data) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert(true, res.data.msg, '#8bf282'));
+            if (res.data.res.msg){
+                dispatch(setAlert(true, res.data.res.msg, '#8bf282'));
+            }
         } else {
             switch (res.data.key){
-                case "connpf":
+                case "activar_pf":
                     dispatch({
                         type: LOCAL_PF_FAIL,
+                    });
+                    break
+                case "get_projects":
+                    dispatch({
+                        type: GET_PROJECTS_FAIL,
+                        payload: res.data.res
                     });
                     break
                 default:
@@ -131,7 +163,7 @@ export const send_data = (code, msg, action, data) => async dispatch => {
             dispatch({
                 type: REMOVE_AUTH_LOADING
             });
-            dispatch(setAlert(true, 'Error al conectar con PF', '#fcbfbf'));
+            dispatch(setAlert(true, res.data.res.msg, '#fcbfbf'));
         }
     }
     catch(err){

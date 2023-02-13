@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
-
+import { send_data } from '../../../redux/actions/localserver';
 
 function Psm({
+    code,
+    send_data
 }) {
 
   return (
-<main>
+    <section>
     <div className="container-fluid px-4">
         <h1 style={{marginTop:"4rem"}}>Progamación Semestral de Mantenimientos</h1>
         <ol className="breadcrumb mb-4">
             <li className="breadcrumb-item active">Progamación Semestral de Mantenimientos</li>
         </ol>
-        <div className="row">
+        <div className="row mt-3">
             <div className="col-xl-3 col-md-6">
                 <div className="card bg-primary text-white mb-4">
                     <div className="card-body">Primary Card</div>
@@ -105,41 +107,18 @@ function Psm({
                             <td>2011/04/25</td>
                             <td>$320,800</td>
                         </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011/07/25</td>
-                            <td>$170,750</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009/01/12</td>
-                            <td>$86,000</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012/03/29</td>
-                            <td>$433,060</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</main>
+</section>
 
 )
 }
 const mapStateToProps = state => ({
+    code: state.Localserver.code,
 })
 export default connect(mapStateToProps, {
-
+    send_data
 })(Psm)

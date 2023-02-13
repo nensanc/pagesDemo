@@ -3,7 +3,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    view_new_process: false,
+    bool_new_process: false,
 };
 
 export default function Listas(state = initialState, action) {
@@ -13,7 +13,7 @@ export default function Listas(state = initialState, action) {
         case VIEW_NEW_PROCESS:
             return{
                 ...state,
-                view_new_process: payload
+                bool_new_process: payload
             }
         default:
             return state

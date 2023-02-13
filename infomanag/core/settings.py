@@ -59,7 +59,9 @@ THIRD_PARTY_APP = [
 ]
 PROJECT_APP = [
     'apps.user',
-    'apps.listas'
+    'apps.listas',
+    'apps.digpi',
+    'apps.udea'
 ]
 
 INSTALLED_APPS = DJANGO_APPS+PROJECT_APP+THIRD_PARTY_APP
@@ -90,7 +92,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'build')],
+        'DIRS': [os.path.join(BASE_DIR, 'build'), 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

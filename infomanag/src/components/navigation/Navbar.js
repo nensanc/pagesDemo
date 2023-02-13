@@ -15,13 +15,7 @@ function Navbar({
   set_signup_status
 }) {
 
-  const scrollToTop = () =>{
-    window.scrollTo({
-      top: 0, 
-      behavior: 'smooth'
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
-    });
+  const onClick = () =>{
     set_sign_state(false);
   };
 
@@ -39,7 +33,7 @@ function Navbar({
       <>
       <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
           <div className="container px-3 px-lg-5">
-              <Link to='/' onClick={scrollToTop} className="navbar-brand">GTD</Link>
+              <Link to='/' onClick={onClick} className="navbar-brand">GTD</Link>
               <button className="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                   <i className="fas fa-bars"></i>

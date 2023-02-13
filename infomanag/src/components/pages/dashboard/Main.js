@@ -6,15 +6,16 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Psm from './Psm';
-import DigConn from './DigConn';
 import LocalServer from './LocalServer';
+import SelectPrj from './SelectPrj';
 import Alert from '../../alert';
+import DigPI from './DigPI';
 
 function Main({
 
 }) {
 
-    const [page, setPage] = useState("digconn");
+    const [page, setPage] = useState("digpi");
 
     const selectPage = (name) =>{
         setPage(name)
@@ -22,9 +23,9 @@ function Main({
 
     const GetPage = (page) =>{
         switch (page) {
-            case "digconn":
+            case "digpi":
                 return(
-                    <DigConn/>
+                    <DigPI/>
                 )
             case "psm":
                 return(
@@ -47,14 +48,13 @@ return (
                 <div className="sb-sidenav-menu">
                     <div className="nav">
                         <Link className="navbar-brand ps-3" to="/">GTD</Link>
-                        <div className="sb-sidenav-menu-heading">Core</div>
-                        <button className="nav-link btn btn-link" onClick={(e)=>selectPage("digconn")}>
-                            <div className="sb-nav-link-icon"><i className="bi bi-gear-wide-connected"></i></div>
-                            DigConn
-                        </button>                        
                         <div className="sb-sidenav-menu-heading">Interface</div>
-                        <button className="nav-link btn btn-link mb-0" onClick={(e)=>selectPage("psm")}>
-                            <div className="sb-nav-link-icon mb-0"><i className="fas fa-tachometer-alt mb-0"></i></div>
+                        <button className="nav-link btn btn-link m-0" onClick={(e)=>selectPage("digpi")}>
+                            <div className="sb-nav-link-icon mb-0 mt-0"><i className="fas fa-tachometer-alt mb-0"></i></div>
+                            DigPI
+                        </button>
+                        <button className="nav-link btn btn-link m-0" onClick={(e)=>selectPage("psm")}>
+                            <div className="sb-nav-link-icon mb-0 mt-0"><i className="fas fa-tachometer-alt mb-0"></i></div>
                             PSM
                         </button>
                         <a className="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -119,6 +119,7 @@ return (
         <div id="layoutSidenav_content">
             {GetPage(page)}
         <LocalServer />
+        <SelectPrj />
         <Footer/>
         </div>
     </div>

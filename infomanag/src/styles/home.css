@@ -11298,6 +11298,7 @@ textarea.form-control-lg {
     padding-bottom: 3rem !important;
   }
 
+
   .pt-xxl-0 {
     padding-top: 0 !important;
   }
@@ -11406,6 +11407,7 @@ textarea.form-control-lg {
     text-align: center !important;
   }
 }
+
 @media (min-width: 1200px) {
   .fs-1 {
     font-size: 2.5rem !important;
@@ -11557,18 +11559,46 @@ body {
   border: 0;
 }
 
+body-bg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #2a5555;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+video.bg-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
+}
+
 .masthead {
   position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 35rem;
-  padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.32) 20%, rgba(0, 0, 0, 0.32) 90%, #000 100%), url("../images/home/home-pp.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.masthead .masthead-content {
+  position: relative;
+  max-width: 100%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
 .masthead h1, .masthead .h1 {
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
@@ -11608,6 +11638,10 @@ body {
 .about-section {
   padding-top: 10rem;
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
 }
 .about-section p {
   margin-bottom: 5rem;
@@ -11615,6 +11649,10 @@ body {
 
 .projects-section {
   padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
 }
 .projects-section .featured-text {
   padding: 2rem;
@@ -11648,6 +11686,10 @@ body {
 }
 
 .signup-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
   padding: 10rem 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../images/home/bg-signup.jpg");
   background-position: center;
@@ -11668,6 +11710,10 @@ body {
 
 .contact-section {
   padding-top: 5rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
 }
 .contact-section .card {
   border: 0;
