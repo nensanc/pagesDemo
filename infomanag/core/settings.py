@@ -61,7 +61,6 @@ PROJECT_APP = [
     'apps.user',
     'apps.listas',
     'apps.digpi',
-    'apps.udea'
 ]
 
 INSTALLED_APPS = DJANGO_APPS+PROJECT_APP+THIRD_PARTY_APP

@@ -3,12 +3,13 @@ import {Oval} from 'react-loader-spinner'
 import {connect} from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.css';
 import {Modal} from 'react-bootstrap';
-import { view_new_process } from '../../../../redux/actions/listas'
+import { view_new_process, create_process } from '../../../../redux/actions/listas';
 
 const NewProcess = ({
   loading,
   bool_new_process,
-  view_new_process
+  view_new_process,
+  create_process
 }) => {
 
   const [formData, setFormData] = useState({
@@ -24,11 +25,15 @@ const NewProcess = ({
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleClose = (e) =>{
-    view_new_process(!bool_new_process)
+    view_new_process(!bool_new_process);
   }
 
   const onSubmit = (e) => {
-
+    e.preventDefault();
+      create_process(
+        process_name,
+        process_desc
+      );
   }
 
   return (
@@ -79,8 +84,10 @@ const NewProcess = ({
               />
             </button>
             :
-            <button type="submit" className="btn-primary btn-block btn-lg">
-              Crear
+            <button 
+                type="submit" 
+                className="btn-primary btn-block btn-lg">
+                Crear
             </button>                    
           }
           </div>
@@ -97,4 +104,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   view_new_process,
+  create_process
 }) (NewProcess)

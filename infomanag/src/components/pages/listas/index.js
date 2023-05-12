@@ -27,11 +27,13 @@ const Index = ({
                     <button onClick={onclick} className="btn btn-primary btn-lg px-4 me-sm-3" >
                           Crear Nuevo Proceso                          
                     </button>
-                    <a className="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                    <a className="btn btn-outline-light btn-lg px-4" href="#!">Saber Mas</a>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img className="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+              <div className="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                <img className="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." />
+                </div>
             </div>
           </div>
         </section>
